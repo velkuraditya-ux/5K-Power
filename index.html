@@ -217,12 +217,10 @@
     }
     h1, .hero-title {
       font-size: var(--type-hero); line-height: 1.05; color: var(--sand);
-      text-transform: uppercase; max-width: 14ch;
+      text-transform: uppercase; max-width: 18ch;
     }
-    .hero-title { display: flex; flex-direction: column; min-height: calc(var(--type-hero) * 2.2); }
-    .scramble { display: block; white-space: nowrap; }
-    .scramble .ch { display: inline-block; min-width: 0.55em; }
-    .scramble .ch.is-glitch { color: var(--brick); }
+    .hero-title { display: flex; flex-direction: column; }
+    .hero-line { display: block; }
     .hero-sub {
       font-weight: 600; text-transform: uppercase; color: var(--warm-gray);
       margin-top: 24px; max-width: 42rem; letter-spacing: 0.04em;
@@ -606,9 +604,9 @@
       </div>
       <div class="hero-content">
         <p class="eyebrow hero-enter" style="margin-bottom: 20px;">UL-Certified Manufacturing &amp; Power Solutions</p>
-        <h1 class="hero-title" aria-label="Reliable Power Manufacturing">
-          <span class="scramble" data-final="RELIABLE POWER">RELIABLE POWER</span>
-          <span class="scramble" data-final="MANUFACTURING">MANUFACTURING</span>
+        <h1 class="hero-title">
+          <span class="hero-line">Reliable Power</span>
+          <span class="hero-line">Manufacturing</span>
         </h1>
         <p class="hero-sub hero-enter">For Mission-Critical, Commercial, and Industrial Infrastructure</p>
         <p class="hero-lead hero-enter">5K Power provides UL-certified electrical manufacturing and integrated power solutions focused on quality, consistency, and schedule-driven execution. Our capabilities support complex electrical distribution needs across mission-critical, commercial, and industrial environments.</p>
@@ -980,52 +978,6 @@
       step.addEventListener("blur", () => step.classList.remove("is-on"));
     });
 
-    function scrambleLine(el) {
-      const finalText = el.getAttribute("data-final") || el.textContent || "";
-      const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      el.textContent = "";
-      const chars = [...finalText].map((letter) => {
-        const span = document.createElement("span");
-        span.className = "ch";
-        span.textContent = letter === " " ? "\u00a0" : letter;
-        el.appendChild(span);
-        return { span, letter };
-      });
-
-      const duration = 1100;
-      const start = performance.now();
-      const count = Math.max(chars.length, 1);
-
-      function lockAll() {
-        chars.forEach((item) => {
-          item.span.textContent = item.letter === " " ? "\u00a0" : item.letter;
-          item.span.classList.remove("is-glitch");
-        });
-        el.setAttribute("aria-label", finalText);
-      }
-
-      function tick(now) {
-        const t = Math.min(1, (now - start) / duration);
-        if (t >= 1) {
-          lockAll();
-          return;
-        }
-        chars.forEach((item, i) => {
-          if (item.letter === " ") return;
-          const lockAt = (i / count) * 0.72;
-          if (t >= lockAt) {
-            item.span.textContent = item.letter;
-            item.span.classList.remove("is-glitch");
-          } else {
-            item.span.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
-            item.span.classList.add("is-glitch");
-          }
-        });
-        requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
     function initMotion() {
       if (reduced || !hasGsap) {
         document.querySelectorAll(".reveal, .hero-enter").forEach((el) => {
@@ -1040,6 +992,11 @@
       }
 
       gsap.registerPlugin(ScrollTrigger);
+
+      gsap.fromTo(".hero-line",
+        { opacity: 0, y: 36 },
+        { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, delay: 0.15, ease: "power3.out" }
+      );
 
       gsap.fromTo(".hero-enter",
         { opacity: 0, y: 32, filter: "blur(8px)" },
@@ -1059,10 +1016,6 @@
         { strokeDashoffset: 1, strokeDasharray: 1 },
         { strokeDashoffset: 0, duration: 2.1, stagger: 0.18, delay: 0.25, ease: "power2.out" }
       );
-
-      document.querySelectorAll(".scramble").forEach((el, i) => {
-        setTimeout(() => scrambleLine(el), 180 + i * 220);
-      });
 
       gsap.utils.toArray(".reveal").forEach((el) => {
         const fromX = el.classList.contains("from-left") ? -48 : el.classList.contains("from-right") ? 48 : 0;
