@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>document.documentElement.classList.add("js");</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5K Power | UL-Certified Electrical Manufacturing &amp; Power Solutions</title>
@@ -214,10 +215,14 @@
     @media (min-width: 640px) {
       .hero-content { width: min(1280px, calc(100% - 3rem)); padding: 192px 0 96px; }
     }
-    h1 {
+    h1, .hero-title {
       font-size: var(--type-hero); line-height: 1.05; color: var(--sand);
       text-transform: uppercase; max-width: 14ch;
     }
+    .hero-title { display: flex; flex-direction: column; min-height: calc(var(--type-hero) * 2.2); }
+    .scramble { display: block; white-space: nowrap; }
+    .scramble .ch { display: inline-block; min-width: 0.55em; }
+    .scramble .ch.is-glitch { color: var(--brick); }
     .hero-sub {
       font-weight: 600; text-transform: uppercase; color: var(--warm-gray);
       margin-top: 24px; max-width: 42rem; letter-spacing: 0.04em;
@@ -522,30 +527,15 @@
       .footer-bottom { flex-direction: row; justify-content: space-between; }
     }
 
-    .reveal { opacity: 0; transform: translateY(28px); filter: blur(4px); }
-    .reveal.is-in {
-      opacity: 1; transform: none; filter: none;
-      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.7s var(--ease);
-    }
-    .reveal.from-left { transform: translateX(-32px); }
-    .reveal.from-right { transform: translateX(32px); }
-    .stagger > * { opacity: 0; transform: translateY(20px); }
-    .stagger.is-in > * {
-      opacity: 1; transform: none;
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-    }
-    .stagger.is-in > *:nth-child(1) { transition-delay: 0.05s; }
-    .stagger.is-in > *:nth-child(2) { transition-delay: 0.12s; }
-    .stagger.is-in > *:nth-child(3) { transition-delay: 0.19s; }
-    .stagger.is-in > *:nth-child(4) { transition-delay: 0.26s; }
-    .stagger.is-in > *:nth-child(5) { transition-delay: 0.33s; }
-    .stagger.is-in > *:nth-child(6) { transition-delay: 0.40s; }
-    .stagger.is-in > *:nth-child(7) { transition-delay: 0.47s; }
+    html.js .reveal,
+    html.js .hero-enter { opacity: 0; }
+    html.js .stagger > * { opacity: 0; }
 
-    .hero-enter { opacity: 0; transform: translateY(24px); }
-    .hero-enter.in {
-      opacity: 1; transform: none;
-      transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    .img-reveal {
+      overflow: hidden;
+    }
+    .img-reveal img {
+      will-change: transform, clip-path, filter;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -616,7 +606,10 @@
       </div>
       <div class="hero-content">
         <p class="eyebrow hero-enter" style="margin-bottom: 20px;">UL-Certified Manufacturing &amp; Power Solutions</p>
-        <h1>Reliable Power<br />Manufacturing</h1>
+        <h1 class="hero-title" aria-label="Reliable Power Manufacturing">
+          <span class="scramble" data-final="RELIABLE POWER">RELIABLE POWER</span>
+          <span class="scramble" data-final="MANUFACTURING">MANUFACTURING</span>
+        </h1>
         <p class="hero-sub hero-enter">For Mission-Critical, Commercial, and Industrial Infrastructure</p>
         <p class="hero-lead hero-enter">5K Power provides UL-certified electrical manufacturing and integrated power solutions focused on quality, consistency, and schedule-driven execution. Our capabilities support complex electrical distribution needs across mission-critical, commercial, and industrial environments.</p>
         <div class="hero-actions hero-enter">
@@ -705,7 +698,7 @@
           </div>
           <div class="reveal">
             <div class="frame">
-              <div class="frame-media parallax">
+              <div class="frame-media parallax img-reveal">
                 <img src="images/electrical-enclosure-switches.jpg" alt="Switches inside an electrical enclosure ensuring uninterruptible power supply" />
               </div>
               <span class="frame-label">Panelboard Assembly</span>
@@ -727,7 +720,7 @@
         <div class="skid-grid">
           <div class="reveal">
             <div class="blueprint">
-              <div class="media parallax">
+              <div class="media parallax img-reveal">
                 <img src="images/control-panel-warning-labels.jpg" alt="Electrical control panel with warning labels on a skid assembly" />
               </div>
               <span class="corner c-tl"></span>
@@ -851,7 +844,7 @@
           </div>
           <div class="reveal">
             <div class="proc-media">
-              <div class="media parallax">
+              <div class="media parallax img-reveal">
                 <img src="images/circuit-breakers-closeup.jpg" alt="Close-up of circuit breakers and wiring in a control panel" />
               </div>
             </div>
@@ -935,6 +928,8 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script>
     /* Replace with the inbox that should receive contact form emails */
     const CONTACT_EMAIL = "YOUR_EMAIL@example.com";
@@ -943,6 +938,7 @@
     const progress = document.getElementById("progress-bar");
     const drawer = document.getElementById("drawer");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const hasGsap = typeof gsap !== "undefined";
 
     document.getElementById("menu-open").addEventListener("click", () => drawer.classList.add("open"));
     document.getElementById("menu-close").addEventListener("click", () => drawer.classList.remove("open"));
@@ -977,72 +973,154 @@
     }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
     sections.forEach((s) => sectionObserver.observe(s));
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-    document.querySelectorAll(".reveal, .stagger").forEach((el) => {
-      if (reduced) el.classList.add("is-in");
-      else revealObserver.observe(el);
-    });
-
-    document.querySelectorAll(".hero-enter").forEach((el, i) => {
-      if (reduced) el.classList.add("in");
-      else setTimeout(() => el.classList.add("in"), 450 + i * 120);
-    });
-
-    const bolts = document.querySelectorAll(".hero-bolts path");
-    bolts.forEach((p, i) => {
-      p.style.strokeDasharray = "1";
-      p.style.strokeDashoffset = reduced ? "0" : "1";
-      if (!reduced) {
-        p.style.transition = `stroke-dashoffset 2.2s cubic-bezier(0.22, 1, 0.36, 1) ${0.4 + i * 0.2}s`;
-        requestAnimationFrame(() => { p.style.strokeDashoffset = "0"; });
-      }
-    });
-
-    const heroMedia = document.getElementById("hero-media");
-    const processFill = document.getElementById("process-fill");
-    const processLine = document.getElementById("process-line");
-
-    function onScroll() {
-      const y = window.scrollY;
-      header.classList.toggle("is-scrolled", y > 12);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
-
-      if (heroMedia && !reduced) {
-        heroMedia.style.transform = "translateY(" + Math.min(y * 0.18, 140) + "px)";
-      }
-
-      if (processFill && processLine && !reduced) {
-        const rect = processLine.getBoundingClientRect();
-        const start = window.innerHeight * 0.7;
-        const end = window.innerHeight * 0.4;
-        const t = 1 - (rect.top - end) / (start - end + rect.height * 0.3);
-        processFill.style.transform = "scaleX(" + Math.max(0, Math.min(1, t)) + ")";
-      }
-
-      document.querySelectorAll(".parallax img").forEach((img) => {
-        if (reduced) return;
-        const box = img.parentElement.getBoundingClientRect();
-        const p = (window.innerHeight / 2 - (box.top + box.height / 2)) / window.innerHeight;
-        img.style.transform = "translateY(" + (p * 24) + "px)";
-      });
-    }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
     document.querySelectorAll(".step").forEach((step) => {
       step.addEventListener("mouseenter", () => step.classList.add("is-on"));
       step.addEventListener("mouseleave", () => step.classList.remove("is-on"));
       step.addEventListener("focus", () => step.classList.add("is-on"));
       step.addEventListener("blur", () => step.classList.remove("is-on"));
     });
+
+    function scrambleLine(el) {
+      const finalText = el.getAttribute("data-final") || el.textContent || "";
+      const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      el.textContent = "";
+      const chars = [...finalText].map((letter) => {
+        const span = document.createElement("span");
+        span.className = "ch";
+        span.textContent = letter === " " ? "\u00a0" : letter;
+        el.appendChild(span);
+        return { span, letter };
+      });
+
+      const duration = 1200;
+      const start = performance.now();
+
+      function tick(now) {
+        const t = Math.min(1, (now - start) / duration);
+        chars.forEach((item, i) => {
+          const revealAt = i / Math.max(chars.length, 1);
+          if (item.letter === " ") return;
+          if (t > revealAt + 0.12) {
+            item.span.textContent = item.letter;
+            item.span.classList.remove("is-glitch");
+          } else if (t > revealAt) {
+            item.span.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+            item.span.classList.add("is-glitch");
+          } else {
+            item.span.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+          }
+        });
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function initMotion() {
+      if (reduced || !hasGsap) {
+        document.querySelectorAll(".reveal, .hero-enter").forEach((el) => {
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        });
+        document.querySelectorAll(".stagger > *").forEach((el) => {
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        });
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.fromTo(".hero-enter",
+        { opacity: 0, y: 32, filter: "blur(8px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, stagger: 0.14, delay: 0.35, ease: "power3.out" }
+      );
+
+      gsap.fromTo("#hero-media",
+        { scale: 1.12, y: 0 },
+        {
+          y: 120,
+          ease: "none",
+          scrollTrigger: { trigger: "#top", start: "top top", end: "bottom top", scrub: true }
+        }
+      );
+
+      gsap.fromTo(".hero-bolts path",
+        { strokeDashoffset: 1, strokeDasharray: 1 },
+        { strokeDashoffset: 0, duration: 2.1, stagger: 0.18, delay: 0.25, ease: "power2.out" }
+      );
+
+      document.querySelectorAll(".scramble").forEach((el, i) => {
+        setTimeout(() => scrambleLine(el), 180 + i * 220);
+      });
+
+      gsap.utils.toArray(".reveal").forEach((el) => {
+        const fromX = el.classList.contains("from-left") ? -48 : el.classList.contains("from-right") ? 48 : 0;
+        gsap.fromTo(el,
+          { opacity: 0, y: fromX ? 0 : 42, x: fromX, filter: "blur(8px)" },
+          {
+            opacity: 1, y: 0, x: 0, filter: "blur(0px)",
+            duration: 1, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 86%", once: true }
+          }
+        );
+      });
+
+      gsap.utils.toArray(".stagger").forEach((group) => {
+        gsap.fromTo(group.children,
+          { opacity: 0, y: 28, filter: "blur(6px)" },
+          {
+            opacity: 1, y: 0, filter: "blur(0px)",
+            duration: 0.7, stagger: 0.08, ease: "power3.out",
+            scrollTrigger: { trigger: group, start: "top 85%", once: true }
+          }
+        );
+      });
+
+      gsap.utils.toArray(".img-reveal").forEach((wrap) => {
+        const img = wrap.querySelector("img");
+        if (!img) return;
+        gsap.fromTo(wrap,
+          { clipPath: "inset(18% 18% 18% 18%)" },
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            duration: 1.15, ease: "power3.out",
+            scrollTrigger: { trigger: wrap, start: "top 82%", once: true }
+          }
+        );
+        gsap.fromTo(img,
+          { scale: 1.2, filter: "grayscale(45%)" },
+          {
+            scale: 1.05, filter: "grayscale(10%)",
+            duration: 1.4, ease: "power2.out",
+            scrollTrigger: { trigger: wrap, start: "top 82%", once: true }
+          }
+        );
+        gsap.to(img, {
+          yPercent: 12, ease: "none",
+          scrollTrigger: { trigger: wrap, start: "top bottom", end: "bottom top", scrub: true }
+        });
+      });
+
+      gsap.fromTo("#process-fill",
+        { scaleX: 0 },
+        {
+          scaleX: 1, ease: "none", transformOrigin: "left center",
+          scrollTrigger: { trigger: "#process-line", start: "top 70%", end: "bottom 45%", scrub: 0.5 }
+        }
+      );
+
+      gsap.to("#progress-bar", {
+        scaleX: 1, ease: "none", transformOrigin: "left center",
+        scrollTrigger: { start: "top top", end: "bottom bottom", scrub: 0.3 }
+      });
+    }
+
+    initMotion();
+
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 12);
+    }, { passive: true });
+    header.classList.toggle("is-scrolled", window.scrollY > 12);
 
     const form = document.getElementById("contact-form");
     const success = document.getElementById("form-success");
