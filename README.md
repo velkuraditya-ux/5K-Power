@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 5K Power Landing Page
 
-## Getting Started
+Static landing page for 5K Power (a 5K Holdings company) — UL-certified
+electrical manufacturing and integrated power solutions.
 
-First, run the development server:
+No backend. Open `index.html` in a browser, or host the folder on any static
+host (Netlify, GitHub Pages, S3, etc.).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Live:** https://velkuraditya-ux.github.io/5K-Power/
+
+## Files
+
+- `index.html` — the full site (HTML + CSS + a little JS)
+- `fonts/` — Barlow + Gehuropic
+- `logo/` — brand logos
+- `images/` — photography
+
+## Contact form → email
+
+The form does not store submissions. It opens a mail draft to the address you set.
+
+1. Open `index.html`
+2. Find this line near the bottom:
+
+```js
+const CONTACT_EMAIL = "YOUR_EMAIL@example.com";
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Replace it with the inbox that should receive inquiries.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+When someone submits, their mail app opens with name, email, company, and
+message already filled in.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Run it
 
-## Learn More
+Double-click `index.html`, or from this folder:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+open index.html
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To preview with a local server (optional):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx serve .
+```

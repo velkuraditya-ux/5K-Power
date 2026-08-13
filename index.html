@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5K Power | UL-Certified Electrical Manufacturing &amp; Power Solutions</title>
+  <meta name="description" content="5K Power provides UL-certified electrical manufacturing and integrated power solutions for mission-critical, commercial, and industrial infrastructure. A 5K Holdings company." />
+  <link rel="icon" href="logo/5K POWER-icon-primary.svg" type="image/svg+xml" />
+  <style>
+    @font-face { font-family: "Barlow"; src: url("fonts/Barlow-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Barlow"; src: url("fonts/Barlow-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Barlow"; src: url("fonts/Barlow-SemiBold.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Barlow"; src: url("fonts/Barlow-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Barlow"; src: url("fonts/Barlow-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Barlow"; src: url("fonts/Barlow-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Gehuropic"; src: url("fonts/Gehuropic.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
+
+    :root {
+      --black: #000000;
+      --brick: #963136;
+      --burgundy: #46282b;
+      --warm-gray: #8a8178;
+      --sand: #e7ded0;
+      --gunmetal: #17181a;
+      --graphite: #232527;
+      --steel: #3a3d42;
+      --brushed-silver: #a9adb1;
+      --type-hero: clamp(3rem, 6vw, 5.25rem);
+      --type-h2: clamp(2.25rem, 4vw, 3.5rem);
+      --type-h3: clamp(1.5rem, 2.5vw, 2.125rem);
+      --type-lead: clamp(1.125rem, 1.5vw, 1.375rem);
+      --type-body: 1.125rem;
+      --type-small: 1rem;
+      --type-label: 0.875rem;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --header-h: 96px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Barlow", sans-serif;
+      background: var(--sand);
+      color: var(--black);
+      min-height: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font-family: inherit; }
+    h1, h2, h3, .font-display {
+      font-family: "Gehuropic", sans-serif;
+      letter-spacing: 0.01em;
+    }
+
+    a, button, input, textarea {
+      transition: color 280ms var(--ease), background-color 280ms var(--ease),
+        border-color 280ms var(--ease), opacity 280ms var(--ease),
+        transform 280ms var(--ease), box-shadow 280ms var(--ease);
+    }
+
+    .wrap {
+      width: min(1280px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+    @media (min-width: 640px) { .wrap { width: min(1280px, calc(100% - 3rem)); } }
+    @media (min-width: 1024px) { .wrap { width: min(1280px, calc(100% - 4rem)); } }
+
+    .eyebrow {
+      font-size: var(--type-label);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brick);
+    }
+
+    .progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60;
+      pointer-events: none; background: transparent;
+    }
+    .progress span {
+      display: block; height: 100%; width: 100%; background: var(--brick);
+      transform: scaleX(0); transform-origin: left center;
+    }
+
+    header {
+      position: fixed; inset: 0 0 auto; z-index: 50;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      padding: 12px 0;
+      transition: background 500ms var(--ease), padding 500ms var(--ease), box-shadow 500ms var(--ease);
+    }
+    header.is-scrolled {
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(16px);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(58,61,66,0.6);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo img { height: 80px; width: auto; transition: height 500ms var(--ease); }
+    header.is-scrolled .logo img { height: 56px; }
+    @media (max-width: 639px) {
+      .logo img { height: 64px; }
+      header.is-scrolled .logo img { height: 48px; }
+    }
+
+    .nav-desktop { display: none; align-items: center; gap: 4px; }
+    .nav-desktop a {
+      position: relative;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(231,222,208,0.8);
+    }
+    .nav-desktop a:hover { color: var(--sand); }
+    .nav-desktop a.is-active { color: var(--brick); }
+    .nav-desktop a span {
+      position: absolute; left: 12px; right: 12px; bottom: -2px; height: 2px;
+      background: var(--brick); transform: scaleX(0); transform-origin: left;
+      transition: transform 300ms var(--ease);
+    }
+    .nav-desktop a.is-active span { transform: scaleX(1); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 0; cursor: pointer;
+      font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      border-radius: 2px;
+    }
+    .btn-brick { background: var(--brick); color: #fff; }
+    .btn-brick:hover { background: #7e292d; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--sand);
+      border: 1px solid rgba(231,222,208,0.5);
+    }
+    .btn-outline:hover { background: var(--sand); color: var(--black); transform: translateY(-2px); }
+    .btn-lg { padding: 14px 28px; font-size: 15px; }
+    .btn-sm { padding: 10px 20px; font-size: 14px; }
+    .header-cta { display: none; }
+
+    .menu-btn {
+      background: none; border: 0; color: var(--sand); padding: 8px; cursor: pointer;
+    }
+    @media (min-width: 1024px) {
+      .nav-desktop, .header-cta { display: flex; }
+      .menu-btn { display: none; }
+    }
+
+    .drawer {
+      position: fixed; inset: 0; z-index: 70; pointer-events: none;
+    }
+    .drawer.open { pointer-events: auto; }
+    .drawer-backdrop {
+      position: absolute; inset: 0; background: rgba(0,0,0,0.5); opacity: 0;
+      transition: opacity 300ms var(--ease);
+    }
+    .drawer.open .drawer-backdrop { opacity: 1; }
+    .drawer-panel {
+      position: absolute; top: 0; right: 0; width: min(280px, 88vw); height: 100%;
+      background: var(--black); color: var(--sand); border-left: 1px solid var(--steel);
+      transform: translateX(100%); transition: transform 350ms var(--ease);
+      display: flex; flex-direction: column;
+    }
+    .drawer.open .drawer-panel { transform: translateX(0); }
+    .drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px; border-bottom: 1px solid rgba(58,61,66,0.6);
+    }
+    .drawer-head img { height: 56px; width: auto; }
+    .drawer-nav { display: flex; flex-direction: column; padding: 20px; gap: 4px; }
+    .drawer-nav a {
+      padding: 12px 0; border-bottom: 1px solid rgba(58,61,66,0.3);
+      text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600;
+      color: rgba(231,222,208,0.9);
+    }
+    .drawer-nav a:hover { color: var(--brick); }
+    .drawer-nav .btn { margin-top: 16px; width: 100%; }
+
+    /* Hero */
+    #top {
+      position: relative; min-height: 92vh; display: flex; align-items: flex-end;
+      overflow: hidden; background: #000;
+    }
+    .hero-media {
+      position: absolute; inset: 0; will-change: transform;
+    }
+    .hero-media img {
+      width: 100%; height: 115%; object-fit: cover; object-position: center;
+      opacity: 0.6; transform: scale(1.08); margin-top: -7.5%;
+    }
+    .hero-shade {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to top, #000 0%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.4) 100%),
+        linear-gradient(to right, rgba(70,40,43,0.4), transparent);
+    }
+    .hero-hatch {
+      position: absolute; inset: 0; opacity: 0.08;
+      background-image: repeating-linear-gradient(115deg, transparent, transparent 2px, #fff 2px, #fff 3px);
+      background-size: 100px 100px;
+    }
+    .hero-bolts {
+      position: absolute; right: -6%; top: 0; height: 100%; width: 45%;
+      color: rgba(150,49,54,0.25); pointer-events: none; display: none;
+    }
+    @media (min-width: 768px) { .hero-bolts { display: block; } }
+    .hero-content {
+      position: relative; z-index: 10; width: min(1280px, calc(100% - 2rem));
+      margin-inline: auto; padding: 160px 0 80px;
+    }
+    @media (min-width: 640px) {
+      .hero-content { width: min(1280px, calc(100% - 3rem)); padding: 192px 0 96px; }
+    }
+    h1 {
+      font-size: var(--type-hero); line-height: 1.05; color: var(--sand);
+      text-transform: uppercase; max-width: 14ch;
+    }
+    .hero-sub {
+      font-weight: 600; text-transform: uppercase; color: var(--warm-gray);
+      margin-top: 24px; max-width: 42rem; letter-spacing: 0.04em;
+      font-size: clamp(1.25rem, 2.2vw, 1.9rem); line-height: 1.15;
+    }
+    .hero-lead {
+      color: rgba(231,222,208,0.8); margin-top: 24px; max-width: 36rem;
+      font-size: var(--type-lead); line-height: 1.5;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 36px; }
+    .scroll-cue {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 10; color: rgba(231,222,208,0.6);
+    }
+    .scroll-cue:hover { color: var(--sand); }
+    @media (prefers-reduced-motion: no-preference) {
+      .scroll-cue { animation: scroll-cue 2.4s ease-in-out infinite; }
+    }
+    @keyframes scroll-cue {
+      0%, 100% { transform: translate(-50%, 0); opacity: 0.55; }
+      50% { transform: translate(-50%, 8px); opacity: 1; }
+    }
+
+    .section { position: relative; padding: 96px 0; }
+    @media (min-width: 640px) { .section { padding: 128px 0; } }
+    .hairline {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(138,129,120,0.35), transparent);
+    }
+    .hairline-dark {
+      background: linear-gradient(to right, transparent, var(--steel), transparent);
+    }
+    .hairline-silver {
+      background: linear-gradient(to right, transparent, rgba(169,173,177,0.4), transparent);
+    }
+
+    .split { display: grid; gap: 48px; }
+    @media (min-width: 1024px) {
+      .split { grid-template-columns: 5fr 7fr; gap: 64px; }
+      .split-even { grid-template-columns: 1fr 1fr; align-items: center; }
+    }
+
+    h2 { text-transform: uppercase; line-height: 1.02; font-size: var(--type-h2); }
+    h3 { text-transform: uppercase; font-size: var(--type-h3); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid currentColor; }
+    .lead { font-size: var(--type-lead); line-height: 1.5; margin-top: 20px; max-width: 42rem; }
+    .body { font-size: var(--type-body); line-height: 1.6; }
+    .body p + p { margin-top: 20px; }
+
+    .callouts {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: rgba(138,129,120,0.3); border: 1px solid rgba(138,129,120,0.3);
+      margin-top: 64px;
+    }
+    @media (min-width: 640px) { .callouts { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1024px) { .callouts { grid-template-columns: repeat(6, 1fr); } }
+    .callout {
+      background: var(--sand); padding: 20px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .callout:hover { background: #fff; transform: translateY(-2px); }
+    .callout svg { width: 20px; height: 20px; color: var(--brick); }
+    .callout:hover svg { transform: scale(1.1); }
+    .callout span {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; color: rgba(0,0,0,0.8); line-height: 1.25;
+    }
+    @media (min-width: 640px) { .callout span { font-size: 14px; } }
+
+    #capabilities { background: #fff; overflow: hidden; }
+    .cap-grid { display: grid; gap: 40px; margin-top: 56px; }
+    @media (min-width: 1024px) { .cap-grid { grid-template-columns: 7fr 5fr; gap: 56px; } }
+    .cap-lists { display: grid; gap: 40px; }
+    @media (min-width: 640px) { .cap-lists { grid-template-columns: 1fr 1fr; } }
+    .list-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: var(--type-small); color: rgba(0,0,0,0.85); padding: 6px 0;
+    }
+    .list-item:hover { transform: translateX(4px); }
+    .dot { width: 6px; height: 6px; margin-top: 8px; flex-shrink: 0; }
+    .dot-brick { background: var(--brick); }
+    .dot-burgundy { background: var(--burgundy); }
+    .dot-silver { background: var(--brushed-silver); }
+    h3.brick { color: var(--brick); }
+    h3.burgundy { color: var(--burgundy); }
+    h3.silver { color: var(--brushed-silver); border-color: rgba(169,173,177,0.4); }
+
+    .frame {
+      position: relative; border: 2px solid rgba(0,0,0,0.1); padding: 8px; height: 100%; min-height: 320px;
+    }
+    .frame:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+    .frame-media { position: relative; overflow: hidden; height: 100%; min-height: 300px; }
+    .frame-media img {
+      width: 100%; height: 115%; object-fit: cover; margin-top: -7.5%;
+      filter: grayscale(15%); transition: filter 700ms var(--ease);
+    }
+    .frame:hover img { filter: grayscale(0); }
+    .frame-label {
+      position: absolute; bottom: 16px; left: 16px;
+      background: rgba(0,0,0,0.8); color: var(--sand);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 6px 12px; backdrop-filter: blur(6px);
+    }
+
+    #solutions { background: var(--gunmetal); overflow: hidden; }
+    .grid-bg {
+      position: absolute; inset: 0; opacity: 0.05; pointer-events: none;
+      background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    #solutions h2 { color: var(--sand); }
+    #solutions .lead { color: rgba(231,222,208,0.7); }
+    .skid-grid { display: grid; gap: 40px; margin-top: 56px; align-items: start; }
+    @media (min-width: 1024px) { .skid-grid { grid-template-columns: 5fr 7fr; gap: 56px; } }
+    .skid-lists { display: grid; gap: 40px; }
+    @media (min-width: 640px) { .skid-lists { grid-template-columns: 1fr 1fr; } }
+    .blueprint { position: relative; border: 1px solid rgba(169,173,177,0.3); padding: 8px; }
+    .blueprint .media { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+    .blueprint img { width: 100%; height: 115%; object-fit: cover; margin-top: -7.5%; }
+    .corner {
+      position: absolute; width: 12px; height: 12px; border-color: var(--brick); border-style: solid;
+      transition: transform 500ms var(--ease);
+    }
+    .blueprint:hover .corner { transform: scale(1.25); }
+    .c-tl { top: -4px; left: -4px; border-width: 2px 0 0 2px; }
+    .c-tr { top: -4px; right: -4px; border-width: 2px 2px 0 0; }
+    .c-bl { bottom: -4px; left: -4px; border-width: 0 0 2px 2px; }
+    .c-br { bottom: -4px; right: -4px; border-width: 0 2px 2px 0; }
+    .list-item.light { color: rgba(231,222,208,0.85); }
+
+    #quality { background: #000; overflow: hidden; }
+    .stripe-bg {
+      position: absolute; inset: 0; opacity: 0.06; pointer-events: none;
+      background-image: repeating-linear-gradient(-25deg, transparent, transparent 3px, #a9adb1 3px, #a9adb1 4px);
+    }
+    #quality h2 { color: var(--sand); }
+    #quality .lead { color: rgba(231,222,208,0.7); }
+    .specs {
+      display: grid; gap: 1px; margin-top: 56px;
+      background: rgba(58,61,66,0.5); border: 1px solid rgba(58,61,66,0.5);
+    }
+    @media (min-width: 1024px) { .specs { grid-template-columns: repeat(5, 1fr); } }
+    .spec { background: #000; padding: 24px; }
+    .spec:hover { background: var(--graphite); }
+    .spec-value {
+      font-family: "Gehuropic", sans-serif; color: var(--brushed-silver);
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+    }
+    .spec:hover .spec-value { color: var(--sand); }
+    .spec-label {
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--warm-gray); margin-top: 8px; font-weight: 600;
+    }
+    .controls {
+      display: grid; gap: 16px 40px; margin-top: 56px; max-width: 56rem;
+    }
+    @media (min-width: 640px) { .controls { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .controls { grid-template-columns: 1fr 1fr 1fr; } }
+    .control {
+      display: flex; align-items: center; gap: 12px; color: rgba(231,222,208,0.85);
+      font-size: var(--type-small);
+    }
+    .control:hover { transform: translateX(4px); }
+    .control svg { width: 16px; height: 16px; color: var(--brick); flex-shrink: 0; }
+
+    #process { background: var(--sand); }
+    .steps { position: relative; margin-top: 64px; }
+    .step-line {
+      display: none; position: absolute; top: 28px; left: 0; right: 0; height: 2px;
+      background: rgba(138,129,120,0.25); overflow: hidden;
+    }
+    .step-line span {
+      display: block; height: 100%; width: 100%; background: var(--brick);
+      transform: scaleX(0); transform-origin: left center;
+    }
+    .step-grid { display: grid; gap: 32px; }
+    @media (min-width: 1024px) {
+      .step-line { display: block; }
+      .step-grid { grid-template-columns: repeat(7, 1fr); gap: 16px; }
+    }
+    .step {
+      display: flex; align-items: center; gap: 16px; width: 100%;
+      background: none; border: 0; cursor: pointer; text-align: left; color: inherit;
+    }
+    @media (min-width: 1024px) {
+      .step { flex-direction: column; text-align: center; gap: 0; }
+    }
+    .step-icon {
+      position: relative; z-index: 1; width: 56px; height: 56px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid rgba(0,0,0,0.2); background: var(--sand);
+    }
+    .step:hover .step-icon, .step.is-on .step-icon {
+      border-color: var(--brick);
+    }
+    .step.is-on .step-icon {
+      background: var(--brick); transform: scale(1.1);
+      box-shadow: 0 8px 24px rgba(150,49,54,0.35);
+    }
+    .step-icon svg { width: 24px; height: 24px; color: rgba(0,0,0,0.7); }
+    .step:hover .step-icon svg { color: var(--brick); }
+    .step.is-on .step-icon svg { color: #fff; }
+    .step-num {
+      position: absolute; top: -8px; right: -8px; width: 20px; height: 20px;
+      background: #000; color: var(--sand); font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-label {
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+      color: rgba(0,0,0,0.8);
+    }
+    @media (min-width: 640px) { .step-label { font-size: 14px; } }
+    @media (min-width: 1024px) { .step-label { margin-top: 16px; } }
+    .step.is-on .step-label { color: var(--brick); }
+    .process-note {
+      margin-top: 64px; max-width: 42rem; border-left: 2px solid var(--brick);
+      padding-left: 20px; color: rgba(0,0,0,0.7); font-size: var(--type-small); line-height: 1.6;
+    }
+
+    #procurement { background: #fff; }
+    .proc-media { border: 2px solid rgba(0,0,0,0.1); padding: 8px; }
+    .proc-media:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+    .proc-media .media { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+    .proc-media img { width: 100%; height: 115%; object-fit: cover; margin-top: -7.5%; }
+
+    #contact {
+      background: linear-gradient(to bottom, var(--burgundy), #000);
+      overflow: hidden;
+    }
+    .contact-glow {
+      position: absolute; inset: 0; opacity: 0.04; pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 20%, #963136 0%, transparent 45%),
+        radial-gradient(circle at 80% 80%, #e7ded0 0%, transparent 40%);
+    }
+    .contact-grid { display: grid; gap: 48px; }
+    @media (min-width: 1024px) { .contact-grid { grid-template-columns: 5fr 7fr; gap: 64px; } }
+    #contact h2 { color: var(--sand); font-size: clamp(2rem, 3vw, 2.75rem); line-height: 1.1; }
+    #contact .lead { color: rgba(231,222,208,0.7); }
+    .person { margin-top: 32px; border-left: 2px solid var(--brick); padding-left: 20px; }
+    .person:hover { transform: translateX(4px); }
+    .person strong {
+      display: block; font-family: "Gehuropic", sans-serif; text-transform: uppercase;
+      color: var(--sand); font-size: 1.375rem; font-weight: 400;
+    }
+    .person span { display: block; color: rgba(231,222,208,0.7); margin-top: 4px; font-size: var(--type-small); }
+
+    form { display: grid; gap: 20px; }
+    @media (min-width: 640px) { form { grid-template-columns: 1fr 1fr; } }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: rgba(231,222,208,0.8); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; }
+    label em { font-style: normal; font-weight: 400; text-transform: none; color: rgba(231,222,208,0.4); }
+    input, textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(231,222,208,0.25);
+      color: var(--sand); border-radius: 2px; padding: 12px 14px; font-size: 16px;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(231,222,208,0.4); }
+    input:focus, textarea:focus {
+      outline: none; border-color: rgba(150,49,54,0.6);
+      box-shadow: 0 0 0 3px rgba(150,49,54,0.25);
+    }
+    textarea { min-height: 132px; resize: vertical; }
+    .form-actions { grid-column: 1 / -1; }
+    .form-success {
+      border: 1px solid rgba(150,49,54,0.4); background: rgba(255,255,255,0.05);
+      padding: 32px; display: none; flex-direction: column; align-items: center;
+      text-align: center; gap: 12px; animation: fade-rise 0.5s ease-out;
+    }
+    .form-success.show { display: flex; }
+    .form-success h3 { border: 0; padding: 0; margin: 0; color: var(--sand); font-size: 1.25rem; }
+    .form-success p { color: rgba(231,222,208,0.7); font-size: 14px; max-width: 24rem; }
+    .form-success svg { width: 32px; height: 32px; color: var(--brick); }
+    @keyframes fade-rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer { background: #000; border-top: 1px solid rgba(58,61,66,0.5); }
+    .footer-inner { padding: 56px 0; }
+    .footer-top { display: flex; flex-direction: column; gap: 40px; }
+    @media (min-width: 768px) {
+      .footer-top { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+    }
+    footer .logo img { height: 28px; width: auto; }
+    .tag { color: var(--warm-gray); font-size: 14px; margin-top: 12px; }
+    .motto {
+      font-family: "Gehuropic", sans-serif; text-transform: uppercase;
+      color: rgba(231,222,208,0.5); margin-top: 16px; font-size: 14px; letter-spacing: 0.04em;
+    }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 8px 32px; }
+    .footer-nav a {
+      color: rgba(231,222,208,0.7); font-size: 14px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .footer-nav a:hover { color: var(--brick); }
+    .footer-bottom {
+      margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(58,61,66,0.4);
+      display: flex; flex-direction: column; gap: 12px;
+      font-size: 12px; color: var(--warm-gray);
+    }
+    @media (min-width: 640px) {
+      .footer-bottom { flex-direction: row; justify-content: space-between; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(28px); filter: blur(4px); }
+    .reveal.is-in {
+      opacity: 1; transform: none; filter: none;
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.7s var(--ease);
+    }
+    .reveal.from-left { transform: translateX(-32px); }
+    .reveal.from-right { transform: translateX(32px); }
+    .stagger > * { opacity: 0; transform: translateY(20px); }
+    .stagger.is-in > * {
+      opacity: 1; transform: none;
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .stagger.is-in > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger.is-in > *:nth-child(2) { transition-delay: 0.12s; }
+    .stagger.is-in > *:nth-child(3) { transition-delay: 0.19s; }
+    .stagger.is-in > *:nth-child(4) { transition-delay: 0.26s; }
+    .stagger.is-in > *:nth-child(5) { transition-delay: 0.33s; }
+    .stagger.is-in > *:nth-child(6) { transition-delay: 0.40s; }
+    .stagger.is-in > *:nth-child(7) { transition-delay: 0.47s; }
+
+    .hero-enter { opacity: 0; transform: translateY(24px); }
+    .hero-enter.in {
+      opacity: 1; transform: none;
+      transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal, .stagger > *, .hero-enter { opacity: 1 !important; transform: none !important; filter: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <header id="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="logo">
+        <img src="logo/5K POWER-logo-white.svg" alt="5K Power - A 5K Holdings Company" />
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="#about">About<span></span></a>
+        <a href="#capabilities">Capabilities<span></span></a>
+        <a href="#solutions">Solutions<span></span></a>
+        <a href="#quality">Quality<span></span></a>
+        <a href="#process">Process<span></span></a>
+        <a href="#contact">Contact<span></span></a>
+      </nav>
+      <a href="#contact" class="btn btn-brick btn-sm header-cta">Contact 5K Power</a>
+      <button class="menu-btn" id="menu-open" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="drawer" id="drawer">
+    <div class="drawer-backdrop" id="menu-close"></div>
+    <div class="drawer-panel" role="dialog" aria-label="Navigation">
+      <div class="drawer-head">
+        <img src="logo/5K POWER-logo-white.svg" alt="5K Power - A 5K Holdings Company" />
+        <button class="menu-btn" id="menu-x" aria-label="Close menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="drawer-nav">
+        <a href="#about">About</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#quality">Quality</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-brick btn-lg">Contact 5K Power</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section id="top">
+      <div class="hero-media" id="hero-media">
+        <img src="images/switch-panel-power-plant.jpg" alt="Interior of an electrical power distribution room with switchgear cabinets" />
+        <div class="hero-shade"></div>
+        <div class="hero-hatch"></div>
+        <svg class="hero-bolts" viewBox="0 0 400 900" fill="none" preserveAspectRatio="none">
+          <path d="M260 0 L120 420 L220 420 L60 900" stroke="currentColor" stroke-width="3" pathLength="1" />
+          <path d="M330 0 L190 380 L270 380 L150 900" stroke="currentColor" stroke-width="1.5" opacity="0.6" pathLength="1" />
+        </svg>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow hero-enter" style="margin-bottom: 20px;">UL-Certified Manufacturing &amp; Power Solutions</p>
+        <h1>Reliable Power<br />Manufacturing</h1>
+        <p class="hero-sub hero-enter">For Mission-Critical, Commercial, and Industrial Infrastructure</p>
+        <p class="hero-lead hero-enter">5K Power provides UL-certified electrical manufacturing and integrated power solutions focused on quality, consistency, and schedule-driven execution. Our capabilities support complex electrical distribution needs across mission-critical, commercial, and industrial environments.</p>
+        <div class="hero-actions hero-enter">
+          <a href="#about" class="btn btn-brick btn-lg">Learn More</a>
+          <a href="#contact" class="btn btn-outline btn-lg">Contact 5K Power</a>
+        </div>
+      </div>
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+    </section>
+
+    <section id="about" class="section">
+      <div class="hairline"></div>
+      <div class="wrap">
+        <div class="split">
+          <div class="reveal from-left">
+            <p class="eyebrow" style="margin-bottom: 16px;">About 5K Power</p>
+            <h2 style="font-size: clamp(2rem, 3vw, 2.75rem); line-height: 1.1;">Manufacturing Built Around Project Needs</h2>
+          </div>
+          <div class="reveal from-right body" style="color: rgba(0,0,0,0.8);">
+            <p>Electrical equipment lead times, supply chain pressure, and inconsistent production can create significant risk for complex projects. 5K Power was established to provide greater control over manufacturing, technical standards, quality, and delivery.</p>
+            <p>Our operation brings manufacturing, procurement coordination, QA/QC, and engineered power solutions into a structured process designed to support reliable project execution.</p>
+            <p>5K Power currently supports the needs of Hays Electrical Services while developing the manufacturing platform and technical foundation for long-term growth.</p>
+          </div>
+        </div>
+        <div class="callouts stagger">
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>UL-Certified Manufacturing</span>
+          </div>
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
+            <span>Controlled QA/QC</span>
+          </div>
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span>Technical Consistency</span>
+          </div>
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
+            <span>Integrated Production</span>
+          </div>
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/><path d="M16 2v4"/><path d="M21 8h-4"/></svg>
+            <span>Schedule-Focused Execution</span>
+          </div>
+          <div class="callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+            <span>Mission-Critical Support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="section">
+      <div class="hairline"></div>
+      <div class="wrap">
+        <div class="reveal">
+          <p class="eyebrow" style="margin-bottom: 16px;">Manufacturing Capabilities</p>
+          <h2>UL-Certified Electrical Manufacturing</h2>
+          <p class="lead" style="color: rgba(0,0,0,0.7);">5K Power manufactures and assembles electrical distribution equipment for demanding infrastructure applications.</p>
+        </div>
+        <div class="cap-grid">
+          <div class="cap-lists">
+            <div class="reveal from-left">
+              <h3 class="brick">UL Product Categories</h3>
+              <div class="stagger">
+                <div class="list-item"><span class="dot dot-brick"></span>UL 891 Switchboards</div>
+                <div class="list-item"><span class="dot dot-brick"></span>UL 508A Industrial Control Panels</div>
+                <div class="list-item"><span class="dot dot-brick"></span>UL 67 Panelboards</div>
+                <div class="list-item"><span class="dot dot-brick"></span>UL 1558 Switchgear</div>
+                <div class="list-item"><span class="dot dot-brick"></span>UL 50 / 50E Enclosures</div>
+              </div>
+            </div>
+            <div class="reveal">
+              <h3 class="burgundy">Additional Capabilities</h3>
+              <div class="stagger">
+                <div class="list-item"><span class="dot dot-burgundy"></span>Temporary power assemblies</div>
+                <div class="list-item"><span class="dot dot-burgundy"></span>Construction power racks</div>
+                <div class="list-item"><span class="dot dot-burgundy"></span>Electrical kitting solutions</div>
+                <div class="list-item"><span class="dot dot-burgundy"></span>Project-specific engineered builds</div>
+                <div class="list-item"><span class="dot dot-burgundy"></span>Custom power distribution systems</div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="frame">
+              <div class="frame-media parallax">
+                <img src="images/electrical-enclosure-switches.jpg" alt="Switches inside an electrical enclosure ensuring uninterruptible power supply" />
+              </div>
+              <span class="frame-label">Panelboard Assembly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions" class="section">
+      <div class="grid-bg"></div>
+      <div class="hairline hairline-silver"></div>
+      <div class="wrap" style="position: relative;">
+        <div class="reveal">
+          <p class="eyebrow" style="margin-bottom: 16px;">Integrated Skid Solutions</p>
+          <h2>Integrated Mission-Critical Skid Solutions</h2>
+          <p class="lead">5K Power supports the manufacturing, assembly, testing, and deployment of mission-critical electrical skids in a controlled production environment.</p>
+        </div>
+        <div class="skid-grid">
+          <div class="reveal">
+            <div class="blueprint">
+              <div class="media parallax">
+                <img src="images/control-panel-warning-labels.jpg" alt="Electrical control panel with warning labels on a skid assembly" />
+              </div>
+              <span class="corner c-tl"></span>
+              <span class="corner c-tr"></span>
+              <span class="corner c-bl"></span>
+              <span class="corner c-br"></span>
+            </div>
+          </div>
+          <div class="skid-lists">
+            <div class="reveal from-right">
+              <h3 class="brick">Applications</h3>
+              <div class="stagger">
+                <div class="list-item light"><span class="dot dot-silver"></span>RMU</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>PDC and PDMC</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>MSS and USS</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>Temporary power systems</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>Generators</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>Project-specific power assemblies</div>
+              </div>
+            </div>
+            <div class="reveal from-right">
+              <h3 class="silver">Integration Scope</h3>
+              <div class="stagger">
+                <div class="list-item light"><span class="dot dot-silver"></span>Equipment receipt and management</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>Equipment placement and assembly</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>Integral electrical connections</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>QA/QC inspections and documentation</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>Testing coordination</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>Logistics</div>
+                <div class="list-item light"><span class="dot dot-silver"></span>Delivery and final setting</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quality" class="section">
+      <div class="stripe-bg"></div>
+      <div class="hairline hairline-dark"></div>
+      <div class="wrap" style="position: relative;">
+        <div class="reveal">
+          <p class="eyebrow" style="margin-bottom: 16px;">Quality &amp; Technical Standards</p>
+          <h2>Consistency at Every Stage of Production</h2>
+          <p class="lead">Quality assurance and technical compliance are integrated throughout the manufacturing and assembly process. 5K Power uses structured QA/QC procedures, assembly verification, documentation control, technical review, and UL-driven fabrication standards to support consistent production.</p>
+        </div>
+        <div class="specs stagger">
+          <div class="spec"><div class="spec-value">800A–5000A</div><div class="spec-label">Assemblies</div></div>
+          <div class="spec"><div class="spec-value">480V</div><div class="spec-label">Systems</div></div>
+          <div class="spec"><div class="spec-value">65kAIC / 100kAIC</div><div class="spec-label">Configurations</div></div>
+          <div class="spec"><div class="spec-value">UL Annex G</div><div class="spec-label">Components</div></div>
+          <div class="spec"><div class="spec-value">Engineered BOM</div><div class="spec-label">Standardization</div></div>
+        </div>
+        <div class="controls reveal">
+          <div class="control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Structured QA/QC procedures</div>
+          <div class="control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Assembly verification</div>
+          <div class="control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Documentation control</div>
+          <div class="control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Technical review</div>
+          <div class="control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Production accountability</div>
+          <div class="control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>UL-driven fabrication standards</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <div class="hairline"></div>
+      <div class="wrap">
+        <div class="reveal">
+          <p class="eyebrow" style="margin-bottom: 16px;">Manufacturing Process</p>
+          <h2>A Controlled Process Through Delivery</h2>
+          <p class="lead" style="color: rgba(0,0,0,0.7);">Every project follows a defined manufacturing and delivery process:</p>
+        </div>
+        <div class="steps" id="process-line">
+          <div class="step-line"><span id="process-fill"></span></div>
+          <div class="step-grid stagger">
+            <button class="step" type="button">
+              <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span class="step-num">1</span></div>
+              <span class="step-label">Engineering</span>
+            </button>
+            <button class="step" type="button">
+              <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="m7.5 4.27 9 5.15"/></svg><span class="step-num">2</span></div>
+              <span class="step-label">Procurement</span>
+            </button>
+            <button class="step" type="button">
+              <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg><span class="step-num">3</span></div>
+              <span class="step-label">Fabrication</span>
+            </button>
+            <button class="step" type="button">
+              <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg><span class="step-num">4</span></div>
+              <span class="step-label">Assembly</span>
+            </button>
+            <button class="step" type="button">
+              <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg><span class="step-num">5</span></div>
+              <span class="step-label">QA/QC Inspection</span>
+            </button>
+            <button class="step" type="button">
+              <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><span class="step-num">6</span></div>
+              <span class="step-label">UL Compliance Verification</span>
+            </button>
+            <button class="step" type="button">
+              <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg><span class="step-num">7</span></div>
+              <span class="step-label">Delivery &amp; Deployment</span>
+            </button>
+          </div>
+        </div>
+        <p class="process-note reveal from-left">This structured approach helps improve production consistency, documentation, technical accountability, and coordination with project schedules.</p>
+      </div>
+    </section>
+
+    <section id="procurement" class="section">
+      <div class="hairline"></div>
+      <div class="wrap">
+        <div class="split split-even">
+          <div class="reveal from-left">
+            <p class="eyebrow" style="margin-bottom: 16px;">Procurement &amp; Supply Chain</p>
+            <h2>Better Coordination Starts Earlier</h2>
+            <div class="body" style="color: rgba(0,0,0,0.8); margin-top: 24px;">
+              <p>5K Power uses a centralized procurement approach to support manufacturing consistency and reduce unnecessary supply chain exposure.</p>
+              <p>Forecast-based purchasing, standardized technical requirements, BOM consistency, and coordinated vendor relationships help align equipment procurement with production needs and project schedules.</p>
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="proc-media">
+              <div class="media parallax">
+                <img src="images/circuit-breakers-closeup.jpg" alt="Close-up of circuit breakers and wiring in a control panel" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="contact-glow"></div>
+      <div class="wrap" style="position: relative;">
+        <div class="contact-grid">
+          <div class="reveal from-left">
+            <p class="eyebrow" style="margin-bottom: 16px;">Contact</p>
+            <h2>Learn More About 5K Power</h2>
+            <p class="lead">For information about 5K Power, current manufacturing capabilities, or project support, contact:</p>
+            <div class="person">
+              <strong>Cray Burrell</strong>
+              <span>Vice President, 5K Power</span>
+            </div>
+          </div>
+          <div class="reveal from-right">
+            <!--
+              CHANGE THE EMAIL below (CONTACT_EMAIL in the script) to the inbox
+              that should receive inquiries. Submitting the form opens a mail draft.
+            -->
+            <form id="contact-form">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" required placeholder="Full name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required placeholder="you@company.com" />
+              </div>
+              <div class="field full">
+                <label for="company">Company <em>(optional)</em></label>
+                <input id="company" name="company" placeholder="Company name" />
+              </div>
+              <div class="field full">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell us about your project or inquiry"></textarea>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-brick btn-lg">Contact 5K Power</button>
+              </div>
+            </form>
+            <div class="form-success" id="form-success">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              <h3>Message Received</h3>
+              <p>Thanks for reaching out — 5K Power will follow up shortly.</p>
+              <button type="button" class="btn btn-outline btn-sm" id="send-another">Send Another Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-top reveal">
+        <div>
+          <div class="logo"><img src="logo/5K POWER-logo-white.svg" alt="5K Power" /></div>
+          <p class="tag">A 5K Holdings Company</p>
+          <p class="motto">Built for What's Next</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="#about">About</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#quality">Quality</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 5K Holdings. All rights reserved.</p>
+        <p>411 N Sam Houston Parkway E, Suite 600, Houston, TX 77060</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Replace with the inbox that should receive contact form emails */
+    const CONTACT_EMAIL = "YOUR_EMAIL@example.com";
+
+    const header = document.getElementById("site-header");
+    const progress = document.getElementById("progress-bar");
+    const drawer = document.getElementById("drawer");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    document.getElementById("menu-open").addEventListener("click", () => drawer.classList.add("open"));
+    document.getElementById("menu-close").addEventListener("click", () => drawer.classList.remove("open"));
+    document.getElementById("menu-x").addEventListener("click", () => drawer.classList.remove("open"));
+    drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => drawer.classList.remove("open")));
+
+    function offsetScroll(hash) {
+      const id = hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - (header.offsetHeight + 8);
+      window.scrollTo({ top, behavior: reduced ? "auto" : "smooth" });
+    }
+
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a[href^='#']");
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (!href || href === "#") return;
+      e.preventDefault();
+      offsetScroll(href);
+      history.replaceState(null, "", href);
+    });
+
+    const navLinks = [...document.querySelectorAll(".nav-desktop a")];
+    const sections = navLinks.map((l) => document.querySelector(l.getAttribute("href"))).filter(Boolean);
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((l) => l.classList.toggle("is-active", l.getAttribute("href") === "#" + entry.target.id));
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+    sections.forEach((s) => sectionObserver.observe(s));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal, .stagger").forEach((el) => {
+      if (reduced) el.classList.add("is-in");
+      else revealObserver.observe(el);
+    });
+
+    document.querySelectorAll(".hero-enter").forEach((el, i) => {
+      if (reduced) el.classList.add("in");
+      else setTimeout(() => el.classList.add("in"), 450 + i * 120);
+    });
+
+    const bolts = document.querySelectorAll(".hero-bolts path");
+    bolts.forEach((p, i) => {
+      p.style.strokeDasharray = "1";
+      p.style.strokeDashoffset = reduced ? "0" : "1";
+      if (!reduced) {
+        p.style.transition = `stroke-dashoffset 2.2s cubic-bezier(0.22, 1, 0.36, 1) ${0.4 + i * 0.2}s`;
+        requestAnimationFrame(() => { p.style.strokeDashoffset = "0"; });
+      }
+    });
+
+    const heroMedia = document.getElementById("hero-media");
+    const processFill = document.getElementById("process-fill");
+    const processLine = document.getElementById("process-line");
+
+    function onScroll() {
+      const y = window.scrollY;
+      header.classList.toggle("is-scrolled", y > 12);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
+
+      if (heroMedia && !reduced) {
+        heroMedia.style.transform = "translateY(" + Math.min(y * 0.18, 140) + "px)";
+      }
+
+      if (processFill && processLine && !reduced) {
+        const rect = processLine.getBoundingClientRect();
+        const start = window.innerHeight * 0.7;
+        const end = window.innerHeight * 0.4;
+        const t = 1 - (rect.top - end) / (start - end + rect.height * 0.3);
+        processFill.style.transform = "scaleX(" + Math.max(0, Math.min(1, t)) + ")";
+      }
+
+      document.querySelectorAll(".parallax img").forEach((img) => {
+        if (reduced) return;
+        const box = img.parentElement.getBoundingClientRect();
+        const p = (window.innerHeight / 2 - (box.top + box.height / 2)) / window.innerHeight;
+        img.style.transform = "translateY(" + (p * 24) + "px)";
+      });
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    document.querySelectorAll(".step").forEach((step) => {
+      step.addEventListener("mouseenter", () => step.classList.add("is-on"));
+      step.addEventListener("mouseleave", () => step.classList.remove("is-on"));
+      step.addEventListener("focus", () => step.classList.add("is-on"));
+      step.addEventListener("blur", () => step.classList.remove("is-on"));
+    });
+
+    const form = document.getElementById("contact-form");
+    const success = document.getElementById("form-success");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = String(data.get("name") || "").trim();
+      const email = String(data.get("email") || "").trim();
+      const company = String(data.get("company") || "").trim();
+      const message = String(data.get("message") || "").trim();
+      const subject = "5K Power inquiry from " + name;
+      const body = [
+        "Name: " + name,
+        "Email: " + email,
+        company ? "Company: " + company : null,
+        "",
+        message
+      ].filter((line) => line !== null).join("\n");
+      window.location.href = "mailto:" + CONTACT_EMAIL
+        + "?subject=" + encodeURIComponent(subject)
+        + "&body=" + encodeURIComponent(body);
+      form.style.display = "none";
+      success.classList.add("show");
+    });
+    document.getElementById("send-another").addEventListener("click", () => {
+      success.classList.remove("show");
+      form.style.display = "grid";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
