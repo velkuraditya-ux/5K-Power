@@ -982,7 +982,7 @@
 
     function scrambleLine(el) {
       const finalText = el.getAttribute("data-final") || el.textContent || "";
-      const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       el.textContent = "";
       const chars = [...finalText].map((letter) => {
         const span = document.createElement("span");
@@ -992,25 +992,36 @@
         return { span, letter };
       });
 
-      const duration = 1200;
+      const duration = 1100;
       const start = performance.now();
+      const count = Math.max(chars.length, 1);
+
+      function lockAll() {
+        chars.forEach((item) => {
+          item.span.textContent = item.letter === " " ? "\u00a0" : item.letter;
+          item.span.classList.remove("is-glitch");
+        });
+        el.setAttribute("aria-label", finalText);
+      }
 
       function tick(now) {
         const t = Math.min(1, (now - start) / duration);
+        if (t >= 1) {
+          lockAll();
+          return;
+        }
         chars.forEach((item, i) => {
-          const revealAt = i / Math.max(chars.length, 1);
           if (item.letter === " ") return;
-          if (t > revealAt + 0.12) {
+          const lockAt = (i / count) * 0.72;
+          if (t >= lockAt) {
             item.span.textContent = item.letter;
             item.span.classList.remove("is-glitch");
-          } else if (t > revealAt) {
-            item.span.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
-            item.span.classList.add("is-glitch");
           } else {
             item.span.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+            item.span.classList.add("is-glitch");
           }
         });
-        if (t < 1) requestAnimationFrame(tick);
+        requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
     }
