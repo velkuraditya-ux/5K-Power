@@ -1,46 +1,36 @@
-# 5K Power Landing Page
+# 5K Power Website
 
-Static landing page for 5K Power (a 5K Holdings company) — UL-certified
-electrical manufacturing and integrated power solutions.
+Static multi-page website for 5K Power, a 5K Holdings company.
 
 No backend. Open `index.html` in a browser, or host the folder on any static
-host (Netlify, GitHub Pages, S3, etc.).
+host such as GitHub Pages or Azure Static Web Apps.
 
 **Live:** https://velkuraditya-ux.github.io/5K-Power/
 
-## Files
+## Pages
 
-- `index.html` — the full site (HTML + CSS + a little JS)
-- `fonts/` — Barlow + Gehuropic
-- `logo/` — brand logos
-- `images/` — photography
+- Home
+- UL-Certified Manufacturing
+- Temporary Power Solutions
+- Integrated Skid Solutions
+- Careers
+- Request a Quote
 
-## Contact form → email
+Shared styling is in `styles.css`; shared browser behavior is in `site.js`.
 
-The form does not store submissions. It opens a mail draft to the address you set.
+## Quote form
 
-1. Open `index.html`
-2. Find this line near the bottom:
-
-```js
-const CONTACT_EMAIL = "YOUR_EMAIL@example.com";
-```
-
-3. Replace it with the inbox that should receive inquiries.
-
-When someone submits, their mail app opens with name, email, company, and
-message already filled in.
+The site has no backend and stores no submissions. The quote form opens an email
+draft to `info@5kpower.com`. File attachments must be added manually to the draft
+before sending.
 
 ## Run it
 
-Double-click `index.html`, or from this folder:
+Preview with any static server:
 
 ```bash
-open index.html
+python3 -m http.server 8080
 ```
 
-To preview with a local server (optional):
-
-```bash
-npx serve .
-```
+Before production launch, confirm the quote inbox, office phone, and careers
+application destination with the appropriate internal teams.
