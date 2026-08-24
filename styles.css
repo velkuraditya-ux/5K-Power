@@ -288,7 +288,7 @@ a:hover .arrow { transform: translateX(4px); }
 
 footer { background: var(--black); color: var(--sand); border-top: 1px solid var(--line-light); }
 .footer-main { padding: 4.5rem 0 2.5rem; display: grid; gap: 2.5rem; }
-.footer-brand img.footer-logo { width: auto; height: 112px; max-width: 140px; }
+.footer-brand img.footer-logo { width: auto; height: 120px; max-width: 150px; }
 .footer-tagline { margin-top: 1rem; font-style: italic; font-weight: 900; letter-spacing: -.01em; text-transform: uppercase; }
 .footer-meta { margin-top: .7rem; color: rgba(231,222,208,.58); font-size: .86rem; }
 .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem 1.5rem; align-content: start; }
