@@ -67,7 +67,7 @@ if (quoteForm) {
         ? `Supporting document selected: ${selectedFile.name} (please attach it manually to this email draft)`
         : "Supporting document: None selected"
     ];
-    window.location.href = `mailto:info@5kpower.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    window.location.href = `mailto:information@5kpower.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
     const status = document.querySelector(".form-status");
     if (status) {
       status.style.display = "block";
