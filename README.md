@@ -34,3 +34,13 @@ python3 -m http.server 8080
 
 Before production launch, confirm the quote inbox, office phone, and careers
 application destination with the appropriate internal teams.
+
+## Azure DevOps / Static Web Apps
+
+This folder is the deployable static site root.
+
+- `staticwebapp.config.json` — Azure Static Web Apps config
+- `azure-pipelines.yml` — sample DevOps pipeline (`skip_app_build: true`)
+
+Set pipeline secret `AZURE_STATIC_WEB_APPS_API_TOKEN` from the Static Web App
+deployment token. See `../AZURE-DEVOPS-SYNC-GUIDE.md` for the exact file sync list.
